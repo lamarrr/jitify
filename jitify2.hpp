@@ -6349,7 +6349,8 @@ class CppLexer {
     return token(Token::Type::kWhitespace);
   }
   Token number() {
-    while (is_alnum(peek())) advance();
+    const char digits_separator = '\'';
+    while (is_alnum(peek()) || peek() == digits_separator) advance();
     return token(Token::Type::kNumber);
   }
   Token string() {
